@@ -1,0 +1,36 @@
+{
+    "relationships":[
+        {
+            "node_one_id":1,
+            "node_two_id":2,
+            "data":{
+                "relationship_class":"parent",
+                "relationship_date":""
+            }
+        },
+        {
+            "node_one_id":1,
+            "node_two_id":5,
+            "data":{
+                "relationship_class":"parent",
+                "relationship_date":""
+            }
+        },
+        {
+            "node_one_id":2,
+            "node_two_id":3,
+            "data":{
+                "relationship_class":"parent",
+                "relationship_date":""
+            }
+        },
+        {
+            "node_one_id":2,
+            "node_two_id":4,
+            "data":{
+                "relationship_class":"adopted parent",
+                "relationship_date":"1/1/2018"
+            }
+        }
+    ]
+}

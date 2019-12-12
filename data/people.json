@@ -1,0 +1,60 @@
+{
+    "people":[
+        {
+            "id":1,
+            "data":{
+                "first_name":"John",
+                "middle_init": "S",
+                "last_name": "Williams",
+                "suffix": "",
+                "dob": "11/29/1958",
+                "gender":"M"
+            }
+        },
+        {
+            "id":2,
+            "data":{
+                "first_name": "John",
+                "middle_init":"S",
+                "last_name":"Williams",
+                "suffix":"Jr.",
+                "dob":"5/30/1982",
+                "gender":"M"
+            }
+        },
+        {
+            "id":3,
+            "data":{
+                "first_name":"John",
+                "middle_init":"S",
+                "last_name":"Williams",
+                "suffix":"III",
+                "dob":"6/1/2014",
+                "gender":"M"
+            }
+        },
+        {
+            "id":4,
+            "data":{
+                "first_name":"Braeden",
+                "middle_init":"T.",
+                "last_name":"Williams",
+                "suffix":"",
+                "dob":"8/1/2017",
+                "gender":"M"
+            }
+        },
+        {
+            "id":5,
+            "data":{
+                "first_name":"Thomas",
+                "middle_init":"S.",
+                "last_name":"Williams",
+                "suffix":"",
+                "dob":"7/27/1983",
+                "gender":"M"
+            }
+        }
+    ]
+    
+}
