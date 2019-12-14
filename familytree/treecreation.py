@@ -47,17 +47,23 @@ class FamilyTree():
         pass
 
     def determine_familial_relationship(self, node_1, node_2):
+
+        # in a directed graph, lowest common ancestor has to calculated in the correct order
+        # whichever node has fewer ancestors comes first in the func call
         if len(nx.ancestors(self._graph, node_1)) < len(nx.ancestors(self._graph, node_2)):
             func_args = (node_1, node_2)
         else:
             func_args = (node_2, node_1)
             
+        # find the node id of the lowest common ancestor
         lca = nx.lowest_common_ancestor(self._graph, *func_args)
-        print(lca)
+        #print(lca)
 
+        # figure out how many generations to lowest common ancestor for each
         node_1_gens = nx.shortest_path_length(self._graph, source=lca, target=node_1)
         node_2_gens = nx.shortest_path_length(self._graph, source=lca, target=node_2)
 
+        # 
         if min(node_1_gens, node_2_gens) > 1:
             removed_cousin = abs(node_1_gens - node_2_gens)
             cousin_level = min(node_1_gens, node_2_gens) - 1
