@@ -23,25 +23,31 @@ def plotly_graph(G):
 
     node_x = []
     node_y = []
+    node_text = []
     for node in G.nodes():
-        x, y = G.nodes[node]['pos']
+        node_data = G.nodes[node]
+        x, y = node_data['pos']
         node_x.append(x)
         node_y.append(y)
+
+        name = node_data['first_name'] + ' ' + node_data['middle_init'] + ' ' + node_data['last_name'] + ' ' + node_data['suffix']
+        node_text.append(name)
 
     node_trace = go.Scatter(
         x=node_x, y=node_y,
         mode='markers',
         hoverinfo='text',
+        hovertext=node_text,
         marker=dict(
-            showscale=True,
+            #showscale=True,
             # colorscale options
             #'Greys' | 'YlGnBu' | 'Greens' | 'YlOrRd' | 'Bluered' | 'RdBu' |
             #'Reds' | 'Blues' | 'Picnic' | 'Rainbow' | 'Portland' | 'Jet' |
             #'Hot' | 'Blackbody' | 'Earth' | 'Electric' | 'Viridis' |
-            colorscale='YlGnBu',
-            reversescale=True,
-            color=[],
-            size=10,
+            #colorscale='YlGnBu',
+            #reversescale=True,
+            color=['blue'] * len(node_x),
+            size=[10] * len(node_x),
             line_width=2))
 
     layout = go.Layout(
