@@ -17,7 +17,7 @@ def plotly_graph(G):
 
     edge_trace = go.Scatter(
         x=edge_x, y=edge_y,
-        line=dict(width=[0.5] * len(edge_x), color=['#888'] * len(edge_x)),
+        # line=dict(width=[0.5] * len(edge_x), color=['#888'] * len(edge_x)),
         hoverinfo='none',
         mode='lines')
 
