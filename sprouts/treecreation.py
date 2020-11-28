@@ -46,6 +46,23 @@ class FamilyTree():
     def calculate_descendants(self, node):
         pass
 
+    def shortest_path_between(self, node_1, node_2):
+        if len(nx.ancestors(self._graph, node_1)) < len(nx.ancestors(self._graph, node_2)):
+            func_args = (node_1, node_2)
+        else:
+            func_args = (node_2, node_1)
+        
+        shortest_path_between = nx.shortest_path(self._graph, *func_args)
+
+        edge_tuples = list(zip(shortest_path_between[:-1], shortest_path_between[1:]))
+    
+        edge_indices = []
+        for idx, edge in enumerate(self._graph.edges):
+            if edge in edge_tuples:
+                edge_indices.append(idx)
+
+        return edge_indices
+
     def determine_familial_relationship(self, node_1, node_2):
 
         # in a directed graph, lowest common ancestor has to calculated in the correct order
