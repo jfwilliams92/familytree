@@ -179,6 +179,9 @@ def display_click_data(clickData, fig):
             fig['data'][1]['marker']['color'][removed_point_idx] = 'blue'
             fig['data'][1]['marker']['size'][removed_point_idx] = 10
 
+        if len(clicks.clicks) == 2:
+            edges_to_highlight = tree.shortest_path_between
+            
 
         if len(selected_nodes) == 0:
             selected_nodes.append(point_data)
