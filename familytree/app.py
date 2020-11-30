@@ -23,13 +23,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div(
     children=[
-    html.H1(children='Hello Dash'),
-
-    html.Div(
-        children='''
-        Dash: A web application framework for Python.
-        '''
-    ),
+    html.H2(children='Your family tree!'),
 
     html.Div(
         className="row",
@@ -41,7 +35,7 @@ app.layout = html.Div(
 
             html.Div(
                 id='text-output',
-                children='Click a point on the graph to change me'
+                children='Click a point on the tree!'
             )   
         ]
     ),

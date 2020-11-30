@@ -55,9 +55,10 @@ def plotly_graph(G):
         titlefont_size=16,
         showlegend=False,
         hovermode='closest',
-        margin=dict(b=20,l=5,r=5,t=40),
+        margin=dict(b=20,l=15,r=15,t=40),
         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)
+        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+        height=750
     )
 
     fig = go.Figure(data=[edge_trace, node_trace], layout=layout)
