@@ -7,14 +7,14 @@ import plotly
 import plotly.graph_objs as go 
 import json
 
-from treecreation import create_tree
+from data.data_model import create_tree
 from treeplotting import plotly_graph
 
 tree = create_tree()
 tree.update_node_positions()
 selected_nodes = []
 
-fig = plotly_graph(tree._graph)
+fig = plotly_graph(tree.graph_)
 
 DEFAULT_COLOR = 'blue'
 DEFAULT_SIZE = 10
@@ -115,7 +115,7 @@ def highlight_path(tree, node_list):
     edge_tuples = list(zip(node_list[:-1], node_list[1:]))
     
     edge_indices = []
-    for idx, edge in enumerate(tree._graph.edges):
+    for idx, edge in enumerate(tree.graph_.edges):
         if edge in edge_tuples:
             edge_indices.append(idx)
 
@@ -155,7 +155,6 @@ updater = markerUpdater(figure=fig, trace_ix=1)
 
 @app.callback(
     [
-        Output('text-output', 'children'),
         Output('example-graph', 'figure'),
         Output('node-1', 'children'),
         Output('relationship', 'children'),
@@ -210,18 +209,18 @@ def display_click_data(clickData, fig):
     node_data = ["", ""]
     for idx, point_idx in enumerate(selected_nodes):
         node_data[idx] = json.dumps(
-            tree._graph.nodes[point_idx + 1],
+            tree.graph_.nodes[point_idx + 1],
             default=lambda x: 'not working',
             indent=4
         )
-        #print(tree._graph.nodes[point_idx + 1])
+        #print(tree.graph_.nodes[point_idx + 1])
         fig['data'][1]['marker']['color'][point_idx] = 'red'
         fig['data'][1]['marker']['size'][point_idx] = 12
 
     selected_nodes_str = [str(d) for d in selected_nodes]
     selected_nodes_str = '; '.join(selected_nodes_str)
 
-    return json.dumps(fig['data'][0]), fig, node_data[0], relationship, node_data[1]
+    return fig, node_data[0], relationship, node_data[1]
     #return json.dumps(fig['data'][1])
 
 if __name__ == '__main__':
