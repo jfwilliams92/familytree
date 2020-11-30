@@ -30,7 +30,7 @@ def plotly_graph(G):
         node_x.append(x)
         node_y.append(y)
 
-        name = node_data['first_name'] + ' ' + node_data['middle_init'] + ' ' + node_data['last_name'] + ' ' + node_data['suffix']
+        name = str(node_data['first_name']) + ' ' + str(node_data['middle_name']) + ' ' + str(node_data['last_name']) + ' ' + str(node_data['suffix'])
         node_text.append(name)
 
     node_trace = go.Scatter(
