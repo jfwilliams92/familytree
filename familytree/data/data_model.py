@@ -7,7 +7,7 @@ from copy import deepcopy
 
 EDGE_WEIGHTS = {
     'Spouse': 0.25,
-    'Parent': 1.0
+    'Parent': 2.0
 }
 
 # a node in the family tree graph
@@ -32,6 +32,7 @@ class Relationship:
         self.person_two = person_two 
         self.relationship_type = relationship_type
         self.weight = EDGE_WEIGHTS.get(self.relationship_type, 1.0)
+        self.len = self.weight
 
 class FamilyTree():
     def __init__(self, persons, relationships):
@@ -170,7 +171,7 @@ class FamilyTree():
 relationship = pd.read_csv('familytree/dev/test_data/test_relationships.csv')
 relationships = []
 for idx, row in relationship.iterrows():
-    if row['Relationship'] != 'Spouse':
+    if row['Relationship'] != 'Filler':
         relationships.append(
             Relationship(
                 row['RelationshipId'],
@@ -180,7 +181,7 @@ for idx, row in relationship.iterrows():
             )
     )
 
-spouses = relationship.loc[relationship.Relationship == 'Spouse', 'Id2'].values
+spouses = relationship.loc[relationship.Relationship == 'Filler', 'Id2'].values
 
 person = pd.read_csv('familytree/dev/test_data/test_ppl.csv')
 persons = []
