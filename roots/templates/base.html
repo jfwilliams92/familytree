@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Your Family Tree</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    
+    <!-- Load plotly -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
 </head>
 
 <body>
@@ -47,6 +52,9 @@
             <div class="container has-text-centered">
                {% block content %}
                {% endblock %}
+
+               {% block javascript %}
+               {% endblock %}
             </div>
         </div>
     </section>
@@ -54,14 +62,6 @@
 
 <footer>
 
-    <script type="text/javascript">
-        // plots the figure with id
-        // id much match the div id above in the html
-        var figure = {{figureJSON | safe}};
-        var ids = "family-tree"
-        Plotly.plot(ids, figure.data, figure.layout)
-    </script>
-    
 </footer>
 
 </html>

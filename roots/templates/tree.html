@@ -2,4 +2,25 @@
 
 {% block content %}
 <div id="family-tree"></div>
+<div id="d3-tree"></div>
+{% endblock %}
+
+{% block javascript %}
+
+<script type="text/javascript">
+  var treePlot = document.getElementById("family-tree")
+  var figure = {{figureJSON | safe}};
+  // var plotDiv = "family-tree"
+  Plotly.plot(treePlot, figure.data, figure.layout)
+
+  treePlot.on('plotly_click', function(data){
+      var pts = '';
+      for(var i=0; i < data.points.length; i++){
+          pts = 'x = ' + '\ny =' + data.points[i].y.toPrecision(4) + '\n\n';
+      }
+      alert('Closest point clicked:\n\n'+pts);
+  });
+</script>
+
+<script type="text/javascript", src="{{ url_for('static', filename='js/treed3.js') }}"></script>
 {% endblock %}
