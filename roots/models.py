@@ -165,7 +165,7 @@ class FamilyTree():
         
         return self.graph_.subgraph(selected_nodes)
 
-relationship = pd.read_csv('familytree/dev/test_data/test_relationships.csv')
+relationship = pd.read_csv('roots/dev/test_data/test_relationships.csv')
 relationships = []
 for idx, row in relationship.iterrows():
     if row['Relationship'] != 'Filler':
@@ -180,7 +180,7 @@ for idx, row in relationship.iterrows():
 
 spouses = relationship.loc[relationship.Relationship == 'Filler', 'Id2'].values
 
-person = pd.read_csv('familytree/dev/test_data/test_ppl.csv')
+person = pd.read_csv('roots/dev/test_data/test_ppl.csv')
 persons = []
 for idx, row in person.iterrows():
     if row['PersonId'] not in spouses:

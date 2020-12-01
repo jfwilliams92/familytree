@@ -1,5 +1,5 @@
 """Application entry point."""
-from familytree import create_app
+from roots import create_app
 
 
 app = create_app()

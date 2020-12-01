@@ -70,7 +70,7 @@ def tree_plot(G):
         height=750
     )
 
-    fig = dict(data=[edge_trace, node_trace], layout=layout)
+    fig = go.Figure(data=[edge_trace, node_trace], layout=layout)
 
     return fig
 

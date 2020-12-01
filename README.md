@@ -4,10 +4,10 @@ To run the project:
 3) Set env variables
 <p>
 On windows:<br>
-`$env:FLASK_APP="familytree"
+`$env:FLASK_APP="roots"
 $env:FLASK_DEBUG=1
 `
 <p>
 On Mac/Linux:<br>
-`export FLASK_APP=familytree`<br>
+`export FLASK_APP=roots`<br>
 `export FLASK_DEBUG=1`
