@@ -1,6 +1,5 @@
 import networkx as nx
 from networkx.drawing.nx_pydot import graphviz_layout
-import numpy as np
 import pandas as pd
 import copy 
 from copy import deepcopy
@@ -141,13 +140,11 @@ class FamilyTree():
 
             return f'{cousin_level}x cousins, {removed_cousin}x removed'
         
-        relationship_matrix = np.array(
-            [
-                ['self', 'parent', 'parent'],
-                ['child', 'brother/sister', 'uncle/aunt'],
-                ['child', 'nephew/niece', 'cousin']
-            ]       
-        )
+        relationship_matrix = [
+            ['self', 'parent', 'parent'],
+            ['child', 'brother/sister', 'uncle/aunt'],
+            ['child', 'nephew/niece', 'cousin']
+        ]
 
         grand_level = min(abs(node_1_gens - node_2_gens) - 1, 1)
         great_level = abs(node_1_gens - node_2_gens) - 2
