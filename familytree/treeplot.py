@@ -1,7 +1,16 @@
 import plotly
 import plotly.graph_objs as go
+import dash
+from dash import Dash
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output, State
 
-def plotly_graph(G):
+from .models import create_tree
+tree = create_tree()
+tree.update_node_positions()
+
+def tree_plot(G):
     
     edge_x = []
     edge_y = []
@@ -61,6 +70,56 @@ def plotly_graph(G):
         height=750
     )
 
-    fig = go.Figure(data=[edge_trace, node_trace], layout=layout)
+    fig = dict(data=[edge_trace, node_trace], layout=layout)
 
     return fig
+
+fig = tree_plot(tree.graph_)
+
+def create_dashboard(server):
+    """Create a Plotly Dash dashboard."""
+    dash_app = dash.Dash(
+        server=server,
+        routes_pathname_prefix='/dashapp/',
+        external_stylesheets=[
+            'https://codepen.io/chriddyp/pen/bWLwgP.css',
+        ]
+    )
+
+    dash_app.layout = html.Div(
+        children=[
+            html.A(html.Button('Go back', className='three-columns'), href='/index'),
+            html.H2(children='Your family tree!'),
+
+            html.Div(
+                className="row",
+                children = [
+                    dcc.Graph(
+                        id='family-tree',
+                        figure=fig
+                    ),
+
+                    html.Div(
+                        id='text-output',
+                        children='Click a point on the tree!'
+                    )   
+                ]
+            ),
+
+            html.Div(
+                className="row",
+                children=[
+                    html.Div(
+                        id="node-1", children="", className="five columns"
+                    ),
+                    html.Div(
+                        id="relationship", children="", className="two columns"
+                    ),
+                    html.Div(
+                        id="node-2", children="", className="five columns"
+                    )
+                ]
+            )   
+        ]
+    )
+    return dash_app.server

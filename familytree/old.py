@@ -3,10 +3,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
-import plotly
-import plotly.graph_objs as go 
-import json
-
 from data.data_model import create_tree
 from treeplotting import plotly_graph
 
